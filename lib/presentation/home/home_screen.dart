@@ -14,7 +14,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   PageController _screenController = PageController();
-  List<Widget> _screens = [
+  int _selectedIndex = 0;
+  final List<Widget> _screens = [
     ClientScreen(),
     ProviderScreen(),
     SaleScreen(),
@@ -26,6 +27,12 @@ class _HomeScreenState extends State<HomeScreen> {
     _screenController.jumpToPage(currentIndex);
   }
 
+  void _onPageChanged(int pageIndex) {
+    setState(() {
+      _selectedIndex = pageIndex;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: _screens,
         controller: _screenController,
         physics: NeverScrollableScrollPhysics(),
+        onPageChanged: _onPageChanged,
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
@@ -42,15 +50,55 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: _onItemTapped,
         items: [
           BottomNavigationBarItem(
-              title: Text('Client'), icon: Icon(Icons.person)),
+              title: Text(
+                'Client',
+                style: TextStyle(
+                    color: _selectedIndex == 0 ? Colors.red : Colors.grey),
+              ),
+              icon: Icon(
+                Icons.person,
+                color: _selectedIndex == 0 ? Colors.red : Colors.grey,
+              )),
           BottomNavigationBarItem(
-              title: Text('provider'), icon: Icon(Icons.local_shipping)),
+              title: Text(
+                'provider',
+                style: TextStyle(
+                    color: _selectedIndex == 1 ? Colors.red : Colors.grey),
+              ),
+              icon: Icon(
+                Icons.local_shipping,
+                color: _selectedIndex == 1 ? Colors.red : Colors.grey,
+              )),
           BottomNavigationBarItem(
-              title: Text('sale'), icon: Icon(Icons.shopping_cart)),
+              title: Text(
+                'sale',
+                style: TextStyle(
+                    color: _selectedIndex == 2 ? Colors.red : Colors.grey),
+              ),
+              icon: Icon(
+                Icons.shopping_cart,
+                color: _selectedIndex == 2 ? Colors.red : Colors.grey,
+              )),
           BottomNavigationBarItem(
-              title: Text('Statistic'), icon: Icon(Icons.pie_chart)),
+              title: Text(
+                'Statistic',
+                style: TextStyle(
+                    color: _selectedIndex == 3 ? Colors.red : Colors.grey),
+              ),
+              icon: Icon(
+                Icons.pie_chart,
+                color: _selectedIndex == 3 ? Colors.red : Colors.grey,
+              )),
           BottomNavigationBarItem(
-              title: Text('Setting'), icon: Icon(Icons.settings)),
+              title: Text(
+                'Setting',
+                style: TextStyle(
+                    color: _selectedIndex == 4 ? Colors.red : Colors.grey),
+              ),
+              icon: Icon(
+                Icons.settings,
+                color: _selectedIndex == 4 ? Colors.red : Colors.grey,
+              )),
         ],
       ),
     );
