@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hanoti/routes/router.dart';
 import 'package:hanoti/routes/routes_constants.dart';
+import 'package:hanoti/values/colors.dart';
 
 void main() {
   runApp(Hanoti());
@@ -18,7 +19,7 @@ class _HanotiState extends State<Hanoti> {
       title: 'Hanoti',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: brandColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       onGenerateRoute: Router.onGenerateRoute,
