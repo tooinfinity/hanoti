@@ -5,6 +5,10 @@ class LocalStorage {
 
   static LocalStorage _singleton = new LocalStorage._internal();
 
+  factory LocalStorage() {
+    return _singleton;
+  }
+
   LocalStorage._internal() {
     // init variables
     initializeSharedPrefrences();
