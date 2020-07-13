@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hanoti/routes/router.dart';
 import 'package:hanoti/routes/routes_constants.dart';
 import 'package:hanoti/services/storage/locale_storage.dart';
@@ -7,6 +8,7 @@ import 'package:hanoti/values/colors.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await LocalStorage.initializeSharedPrefrences();
+  await DotEnv().load('.env');
   runApp(Hanoti());
 }
 
