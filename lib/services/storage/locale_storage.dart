@@ -18,13 +18,23 @@ class LocalStorage {
     _sharedPreferences = await SharedPreferences.getInstance();
   }
 
-  // Write from shared prefrences
+  // Write from shared prefrences String values
   static Future<bool> setItem(String key, String value) {
     return _sharedPreferences.setString(key, value);
   }
 
-  // Read from shared prefrences
+  // Read from shared prefrences String value
   static String getItem(String key) {
     return _sharedPreferences.getString(key);
+  }
+
+  // Write from shared prefrences boolean values
+  static Future<bool> setBool(String key, value) {
+    return _sharedPreferences.setBool(key, value);
+  }
+
+  // Read from shared prefrences boolean value
+  static bool getBool(String key) {
+    return _sharedPreferences.getBool(key);
   }
 }

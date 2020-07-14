@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:hanoti/provider/themes.dart';
 import 'package:hanoti/routes/router.dart';
 import 'package:hanoti/routes/routes_constants.dart';
 import 'package:hanoti/services/repositories/client_repository.dart';
 import 'package:hanoti/services/state/client_state.dart';
 import 'package:hanoti/services/storage/locale_storage.dart';
 import 'package:hanoti/values/colors.dart';
+import 'package:provider/provider.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
 
 void main() async {
@@ -28,15 +30,19 @@ class _HanotiState extends State<Hanoti> {
         Inject<ClientState>(() => ClientState(ClientRepositoryImpl())),
       ],
       builder: (context) {
-        return MaterialApp(
-          title: 'Hanoti',
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            primarySwatch: brandColor,
-            visualDensity: VisualDensity.adaptivePlatformDensity,
+        return ChangeNotifierProvider(
+          create: (context) => ThemeNotifier(),
+          child: Consumer<ThemeNotifier>(
+            builder: (context, ThemeNotifier notifier, child) {
+              return MaterialApp(
+                title: 'Hanoti',
+                debugShowCheckedModeBanner: false,
+                theme: notifier.darkTheme ? dark : light,
+                onGenerateRoute: Router.onGenerateRoute,
+                initialRoute: homeRoute,
+              );
+            },
           ),
-          onGenerateRoute: Router.onGenerateRoute,
-          initialRoute: homeRoute,
         );
       },
     );
