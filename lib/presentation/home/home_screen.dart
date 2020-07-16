@@ -4,7 +4,9 @@ import 'package:hanoti/presentation/providers/provider_screen.dart';
 import 'package:hanoti/presentation/sales/sale_screen.dart';
 import 'package:hanoti/presentation/settings/setting_screen.dart';
 import 'package:hanoti/presentation/statistics/statistic_screen.dart';
+import 'package:hanoti/provider/themes.dart';
 import 'package:hanoti/values/colors.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key key}) : super(key: key);
@@ -43,64 +45,81 @@ class _HomeScreenState extends State<HomeScreen> {
         physics: NeverScrollableScrollPhysics(),
         onPageChanged: _onPageChanged,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        iconSize: 30,
-        selectedFontSize: 15,
-        unselectedFontSize: 12,
-        onTap: _onItemTapped,
-        items: [
-          BottomNavigationBarItem(
+      bottomNavigationBar: Consumer<ThemeNotifier>(
+        builder: (context, notifier, child) => BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          iconSize: 30,
+          selectedFontSize: 15,
+          unselectedFontSize: 12,
+          onTap: _onItemTapped,
+          items: [
+            BottomNavigationBarItem(
               title: Text(
                 'Client',
                 style: TextStyle(
-                    color: _selectedIndex == 0 ? brandColor : Colors.grey),
+                    color: _selectedIndex == 0
+                        ? (notifier.darkTheme ? Colors.white : Colors.black)
+                        : Colors.grey),
               ),
-              icon: Icon(
-                Icons.person,
-                color: _selectedIndex == 0 ? brandColor : Colors.grey,
-              )),
-          BottomNavigationBarItem(
+              icon: Icon(Icons.person,
+                  color: _selectedIndex == 0
+                      ? (notifier.darkTheme ? Colors.white : Colors.black)
+                      : Colors.grey),
+            ),
+            BottomNavigationBarItem(
               title: Text(
                 'provider',
                 style: TextStyle(
-                    color: _selectedIndex == 1 ? brandColor : Colors.grey),
+                    color: _selectedIndex == 1
+                        ? (notifier.darkTheme ? Colors.white : Colors.black)
+                        : Colors.grey),
               ),
-              icon: Icon(
-                Icons.local_shipping,
-                color: _selectedIndex == 1 ? brandColor : Colors.grey,
-              )),
-          BottomNavigationBarItem(
+              icon: Icon(Icons.local_shipping,
+                  color: _selectedIndex == 1
+                      ? (notifier.darkTheme ? Colors.white : Colors.black)
+                      : Colors.grey),
+            ),
+            BottomNavigationBarItem(
               title: Text(
                 'sale',
                 style: TextStyle(
-                    color: _selectedIndex == 2 ? brandColor : Colors.grey),
+                    color: _selectedIndex == 2
+                        ? (notifier.darkTheme ? Colors.white : Colors.black)
+                        : Colors.grey),
               ),
-              icon: Icon(
-                Icons.shopping_cart,
-                color: _selectedIndex == 2 ? brandColor : Colors.grey,
-              )),
-          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart,
+                  color: _selectedIndex == 2
+                      ? (notifier.darkTheme ? Colors.white : Colors.black)
+                      : Colors.grey),
+            ),
+            BottomNavigationBarItem(
               title: Text(
                 'Statistic',
                 style: TextStyle(
-                    color: _selectedIndex == 3 ? brandColor : Colors.grey),
+                    color: _selectedIndex == 3
+                        ? (notifier.darkTheme ? Colors.white : Colors.black)
+                        : Colors.grey),
               ),
-              icon: Icon(
-                Icons.pie_chart,
-                color: _selectedIndex == 3 ? brandColor : Colors.grey,
-              )),
-          BottomNavigationBarItem(
+              icon: Icon(Icons.pie_chart,
+                  color: _selectedIndex == 3
+                      ? (notifier.darkTheme ? Colors.white : Colors.black)
+                      : Colors.grey),
+            ),
+            BottomNavigationBarItem(
               title: Text(
                 'Setting',
                 style: TextStyle(
-                    color: _selectedIndex == 4 ? brandColor : Colors.grey),
+                    color: _selectedIndex == 4
+                        ? (notifier.darkTheme ? Colors.white : Colors.black)
+                        : Colors.grey),
               ),
-              icon: Icon(
-                Icons.settings,
-                color: _selectedIndex == 4 ? brandColor : Colors.grey,
-              )),
-        ],
+              icon: Icon(Icons.settings,
+                  color: _selectedIndex == 4
+                      ? (notifier.darkTheme ? Colors.white : Colors.black)
+                      : Colors.grey),
+            ),
+          ],
+        ),
       ),
     );
   }

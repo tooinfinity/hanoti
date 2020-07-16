@@ -15,4 +15,4 @@ const MaterialColor brandColor = MaterialColor(
     900: Color.fromRGBO(7, 94, 84, 1.0),
   },
 );
-const int brandPrimaryColor = 0xFF075E54;
+const int brandPrimaryColor = 0xFF4c5265;
