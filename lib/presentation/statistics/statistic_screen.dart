@@ -6,7 +6,9 @@ class StatisticScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('STATISTIC'),),
+      appBar: AppBar(
+        title: Text('Statistices'),
+      ),
     );
   }
 }

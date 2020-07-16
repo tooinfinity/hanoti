@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hanoti/provider/themes.dart';
 import 'package:provider/provider.dart';
 
@@ -16,7 +17,7 @@ class _SettingScreenState extends State<SettingScreen>
     super.build(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('SETTING'),
+        title: Text('Settings'),
       ),
       body: ListView(
         children: <Widget>[
@@ -31,38 +32,8 @@ class _SettingScreenState extends State<SettingScreen>
           ),
           ListTile(
             title: Text('Server Name'),
-            subtitle: Text('entrer you server name'),
+            subtitle: Text(DotEnv().env['BASE_URL']),
             leading: Icon(Icons.rss_feed),
-            onTap: () => showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                // return object of type Dialog
-                return AlertDialog(
-                  title: Text("Alert Dialog title"),
-                  content: TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Put your Server Name here',
-                      hintText: 'serverName',
-                    ),
-                  ),
-                  actions: <Widget>[
-                    // usually buttons at the bottom of the dialog
-                    FlatButton(
-                      child: Text("Close"),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                    FlatButton(
-                      child: Text("Save"),
-                      onPressed: () {
-                      },
-                    ),
-                  ],
-                );
-              },
-            ),
           ),
           ListTile(
             title: Text('Language'),

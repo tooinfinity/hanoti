@@ -7,7 +7,7 @@ class SaleScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('SALE'),
+        title: Text('Sales'),
       ),
     );
   }

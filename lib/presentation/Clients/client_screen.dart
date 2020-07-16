@@ -20,7 +20,7 @@ class _ClientScreenState extends State<ClientScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('CLIENT'),
+        title: Text('Clients'),
       ),
       body: SingleChildScrollView(
         child: StateBuilder<ClientState>(
