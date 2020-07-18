@@ -1,5 +1,6 @@
 // route constants name
 
+const String splashScreenRoute = 'splash';
 const String homeRoute = 'home';
 const String clientRoute = 'client';
 const String providerRoute = 'provider';

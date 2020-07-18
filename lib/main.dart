@@ -42,7 +42,7 @@ class _HanotiState extends State<Hanoti> {
                 debugShowCheckedModeBanner: false,
                 theme: notifier.darkTheme ? dark : light,
                 onGenerateRoute: Router.onGenerateRoute,
-                initialRoute: homeRoute,
+                initialRoute: splashScreenRoute,
               );
             },
           ),
