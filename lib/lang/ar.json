@@ -1,7 +1,12 @@
 {
+  "HANOTI":"حانوتي",
+  "dark_mode":"الوضع الليلي",
+  "server_name" : "اسم الخادم",
+  "select_lang" : "اختر لغتك",
   "client_screen" : "الزبائن",
   "provider_screen" : "الموردين",
   "sale_screen" : "المبيعات",
   "statistic_screen" : "الحسابات",
-  "setting_screen" : "الاعدادات"
+  "setting_screen" : "الاعدادات",
+  "page_not_found" : "لا توجد هذه الصفحة"
 }

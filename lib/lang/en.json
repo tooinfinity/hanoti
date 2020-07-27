@@ -1,7 +1,12 @@
 {
+  "HANOTI":"HANOTI",
+  "dark_mode":"Dark Mode",
+  "server_name" : "Server Name",
+  "select_lang" : "Select Your Language",
   "client_screen" : "Clients",
   "provider_screen" : "Providers",
   "sale_screen" : "Sales",
   "statistic_screen" : "Statistices",
-  "setting_screen" : "Settings"
+  "setting_screen" : "Settings",
+  "page_not_found" : "Page not Found"
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:hanoti/localization/language_consts.dart';
 import 'package:hanoti/provider/language.dart';
 import 'package:hanoti/provider/themes.dart';
 import 'package:hanoti/services/models/language.dart';
@@ -11,13 +12,13 @@ class SettingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings'),
+        title: Text(getTranslate(context, 'setting_screen')),
       ),
       body: ListView(
         children: <Widget>[
           Consumer<ThemeNotifier>(
             builder: (context, notifier, child) => SwitchListTile(
-              title: Text('Dark Mode'),
+              title: Text(getTranslate(context, 'dark_mode')),
               value: notifier.darkTheme,
               onChanged: (val) {
                 notifier.toggleTheme();
@@ -25,17 +26,16 @@ class SettingScreen extends StatelessWidget {
             ),
           ),
           ListTile(
-            title: Text('Server Name'),
+            title: Text(getTranslate(context, 'server_name')),
             subtitle: Text(DotEnv().env['BASE_URL']),
             leading: Icon(Icons.rss_feed),
           ),
           Consumer<AppLanguage>(
             builder: (context, appLanguage, child) => ListTile(
-              title: Text('Select Your Language'),
+              title: Text(getTranslate(context, 'select_lang')),
               leading: Icon(Icons.translate),
               trailing: DropdownButton<String>(
-                  value: appLanguage
-                      .localeToString(appLanguage.appLocal),
+                  value: appLanguage.localeToString(appLanguage.appLocal),
                   icon: Icon(
                     Icons.arrow_downward,
                   ),

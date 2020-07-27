@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hanoti/localization/language_consts.dart';
 
 class ProviderScreen extends StatelessWidget {
   const ProviderScreen({Key key}) : super(key: key);
@@ -7,7 +8,7 @@ class ProviderScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Providers'),
+        title: Text(getTranslate(context, 'provider_screen')),
       ),
     );
   }

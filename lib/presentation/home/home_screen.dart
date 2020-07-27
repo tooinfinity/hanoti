@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hanoti/localization/language_consts.dart';
 import 'package:hanoti/presentation/Clients/client_screen.dart';
 import 'package:hanoti/presentation/providers/provider_screen.dart';
 import 'package:hanoti/presentation/sales/sale_screen.dart';
@@ -48,13 +49,12 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (context, notifier, child) => BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           iconSize: 30,
-          selectedFontSize: 15,
-          unselectedFontSize: 12,
+          unselectedFontSize: 13,
           onTap: _onItemTapped,
           items: [
             BottomNavigationBarItem(
               title: Text(
-                'Client',
+                getTranslate(context, 'client_screen'),
                 style: TextStyle(
                     color: _selectedIndex == 0
                         ? (notifier.darkTheme ? Colors.white : Colors.black)
@@ -67,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             BottomNavigationBarItem(
               title: Text(
-                'provider',
+                getTranslate(context, 'provider_screen'),
                 style: TextStyle(
                     color: _selectedIndex == 1
                         ? (notifier.darkTheme ? Colors.white : Colors.black)
@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             BottomNavigationBarItem(
               title: Text(
-                'sale',
+                getTranslate(context, 'sale_screen'),
                 style: TextStyle(
                     color: _selectedIndex == 2
                         ? (notifier.darkTheme ? Colors.white : Colors.black)
@@ -93,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             BottomNavigationBarItem(
               title: Text(
-                'Statistic',
+                getTranslate(context, 'statistic_screen'),
                 style: TextStyle(
                     color: _selectedIndex == 3
                         ? (notifier.darkTheme ? Colors.white : Colors.black)
@@ -106,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             BottomNavigationBarItem(
               title: Text(
-                'Setting',
+                getTranslate(context, 'setting_screen'),
                 style: TextStyle(
                     color: _selectedIndex == 4
                         ? (notifier.darkTheme ? Colors.white : Colors.black)

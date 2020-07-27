@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hanoti/localization/language_consts.dart';
 import 'package:hanoti/provider/themes.dart';
 import 'package:hanoti/routes/routes_constants.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +20,7 @@ class _SplashScreensState extends State<SplashScreens> {
         seconds: 3,
         backgroundColor: notifier.darkTheme ? Colors.black : Colors.white,
         title: Text(
-          'HANOTI',
+          getTranslate(context, 'HANOTI'),
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30.0),
         ),
         navigateAfterSeconds: homeRoute,

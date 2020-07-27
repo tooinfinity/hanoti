@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hanoti/localization/language_consts.dart';
 
 class NotFoundScreen extends StatelessWidget {
   const NotFoundScreen({Key key}) : super(key: key);
@@ -7,7 +8,7 @@ class NotFoundScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('This Screen Not Found'),
+        child: Text(getTranslate(context, 'page_not_found')),
       ),
     );
   }
