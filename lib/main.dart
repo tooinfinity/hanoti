@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:hanoti/localization/app_localization.dart';
+import 'package:hanoti/provider/language.dart';
 import 'package:hanoti/provider/themes.dart';
 import 'package:hanoti/routes/router.dart';
 import 'package:hanoti/routes/routes_constants.dart';
@@ -16,16 +19,17 @@ void main() async {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
   ));
+  // AppLanguage appLanguage = AppLanguage();
+  // await appLanguage.fetchLocale();
   await DotEnv().load('.env');
-  runApp(Hanoti());
+  runApp(Hanoti(
+      // appLanguage: appLanguage,
+      ));
 }
 
-class Hanoti extends StatefulWidget {
-  @override
-  _HanotiState createState() => _HanotiState();
-}
-
-class _HanotiState extends State<Hanoti> {
+class Hanoti extends StatelessWidget {
+  // final AppLanguage appLanguage;
+  // Hanoti({this.appLanguage});
   @override
   Widget build(BuildContext context) {
     return Injector(
@@ -33,11 +37,40 @@ class _HanotiState extends State<Hanoti> {
         Inject<ClientState>(() => ClientState(ClientRepositoryImpl())),
       ],
       builder: (context) {
-        return ChangeNotifierProvider(
-          create: (context) => ThemeNotifier(),
-          child: Consumer<ThemeNotifier>(
-            builder: (context, ThemeNotifier notifier, child) {
+        return MultiProvider(
+          providers: [
+            ChangeNotifierProvider<ThemeNotifier>(
+                create: (_) => ThemeNotifier()),
+            ChangeNotifierProvider<AppLanguage>(create: (_) => AppLanguage()),
+          ],
+          // return ChangeNotifierProvider(
+          //   create: (context) => ThemeNotifier(),
+          child: Consumer2<ThemeNotifier, AppLanguage>(
+            builder: (context, ThemeNotifier notifier, AppLanguage appLanguage,
+                child) {
               return MaterialApp(
+                supportedLocales: [
+                  Locale('en', 'US'),
+                  Locale('fr', 'FR'),
+                  Locale('ar', 'DZ')
+                ],
+                locale: Provider.of<AppLanguage>(context).appLocal,
+                localizationsDelegates: [
+                  // ... app-specific localization delegate[s] here
+                  AppLocalization.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                localeResolutionCallback: (deviceLocale, supporedLocales) {
+                  for (var locale in supporedLocales) {
+                    if (locale.languageCode == deviceLocale.languageCode &&
+                        locale.countryCode == deviceLocale.countryCode) {
+                      return deviceLocale;
+                    }
+                  }
+                  return supporedLocales.first;
+                },
                 title: 'Hanoti',
                 debugShowCheckedModeBanner: false,
                 theme: notifier.darkTheme ? dark : light,

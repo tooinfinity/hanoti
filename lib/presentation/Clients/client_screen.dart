@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hanoti/localization/language_consts.dart';
 import 'package:hanoti/services/state/client_state.dart';
 import 'package:hanoti/values/colors.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
@@ -20,7 +21,7 @@ class _ClientScreenState extends State<ClientScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Clients'),
+        title: Text(getTranslate(context, 'client_screen')),
       ),
       body: SingleChildScrollView(
         child: StateBuilder<ClientState>(

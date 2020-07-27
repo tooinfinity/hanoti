@@ -5,7 +5,6 @@ import 'package:hanoti/presentation/sales/sale_screen.dart';
 import 'package:hanoti/presentation/settings/setting_screen.dart';
 import 'package:hanoti/presentation/statistics/statistic_screen.dart';
 import 'package:hanoti/provider/themes.dart';
-import 'package:hanoti/values/colors.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
