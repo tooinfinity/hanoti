@@ -3,7 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hanoti/localization/language_consts.dart';
 import 'package:hanoti/provider/language.dart';
 import 'package:hanoti/provider/themes.dart';
-import 'package:hanoti/services/models/language.dart';
+import 'package:hanoti/services/classes/language/language.dart';
 import 'package:provider/provider.dart';
 
 class SettingScreen extends StatelessWidget {
