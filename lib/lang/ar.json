@@ -3,6 +3,7 @@
   "dark_mode":"الوضع الليلي",
   "server_name" : "اسم الخادم",
   "select_lang" : "اختر لغتك",
+  "searching":  "...البحث",
   "client_screen" : "الزبائن",
   "provider_screen" : "الموردين",
   "sale_screen" : "المبيعات",

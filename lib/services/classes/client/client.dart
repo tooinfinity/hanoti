@@ -15,4 +15,16 @@ class Client {
         email = jsonMap['email'] ?? "",
         phone = jsonMap['phone'] ?? "",
         website = jsonMap['website'] ?? "";
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['name'] = this.name;
+    data['username'] = this.username;
+    data['email'] = this.email;
+
+    data['phone'] = this.phone;
+    data['website'] = this.website;
+    return data;
+  }
 }

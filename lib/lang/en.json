@@ -3,6 +3,7 @@
   "dark_mode":"Dark Mode",
   "server_name" : "Server Name",
   "select_lang" : "Select Your Language",
+  "searching": "Searching ...",
   "client_screen" : "Clients",
   "provider_screen" : "Providers",
   "sale_screen" : "Sales",
