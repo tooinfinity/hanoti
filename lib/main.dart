@@ -8,7 +8,9 @@ import 'package:hanoti/provider/themes.dart';
 import 'package:hanoti/routes/router.dart';
 import 'package:hanoti/routes/routes_constants.dart';
 import 'package:hanoti/services/repositories/client_repository.dart';
+import 'package:hanoti/services/repositories/provider_repository.dart';
 import 'package:hanoti/services/state/client_state.dart';
+import 'package:hanoti/services/state/provider_state.dart';
 import 'package:hanoti/services/storage/locale_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:states_rebuilder/states_rebuilder.dart';
@@ -35,6 +37,7 @@ class Hanoti extends StatelessWidget {
     return Injector(
       inject: [
         Inject<ClientState>(() => ClientState(ClientRepositoryImpl())),
+        Inject<ProviderState>(() => ProviderState(ProviderRepositoryImpl())),
       ],
       builder: (context) {
         return MultiProvider(
