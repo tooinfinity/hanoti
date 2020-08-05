@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:hanoti/services/classes/errors/errors.dart';
 import 'package:hanoti/services/classes/provider/provider.dart';
-import 'package:http/http.dart' as http;
+import 'package:hanoti/services/hanoti_api.dart';
 import 'package:path_provider/path_provider.dart';
 
 abstract class ProviderRepository {
@@ -28,15 +28,15 @@ class ProviderRepositoryImpl implements ProviderRepository {
       return _providers;
     } else {
       try {
-        final response =
-            await http.get('https://jsonplaceholder.typicode.com/posts');
-        List<Provider> _providers = (json.decode(response.body) as List)
+        final response = await HanotiApi.dio.get('/posts');
+        String _temp = json.encode(response.data);
+        List<Provider> _providers = (response.data as List)
             .map((provider) => Provider.fromJson(provider))
             .toList();
 
         var tempDir = await getTemporaryDirectory();
         File file = new File(tempDir.path + "/" + fileName);
-        file.writeAsString(response.body, flush: true, mode: FileMode.write);
+        file.writeAsString(_temp, flush: true, mode: FileMode.write);
         return _providers;
       } on DioError catch (e) {
         throw showNetworkError(e);
