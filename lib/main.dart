@@ -21,17 +21,11 @@ void main() async {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
   ));
-  // AppLanguage appLanguage = AppLanguage();
-  // await appLanguage.fetchLocale();
   await DotEnv().load('.env');
-  runApp(Hanoti(
-      // appLanguage: appLanguage,
-      ));
+  runApp(Hanoti());
 }
 
 class Hanoti extends StatelessWidget {
-  // final AppLanguage appLanguage;
-  // Hanoti({this.appLanguage});
   @override
   Widget build(BuildContext context) {
     return Injector(
