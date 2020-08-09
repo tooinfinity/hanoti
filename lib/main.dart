@@ -40,8 +40,6 @@ class Hanoti extends StatelessWidget {
                 create: (_) => ThemeNotifier()),
             ChangeNotifierProvider<AppLanguage>(create: (_) => AppLanguage()),
           ],
-          // return ChangeNotifierProvider(
-          //   create: (context) => ThemeNotifier(),
           child: Consumer2<ThemeNotifier, AppLanguage>(
             builder: (context, ThemeNotifier notifier, AppLanguage appLanguage,
                 child) {
@@ -53,7 +51,6 @@ class Hanoti extends StatelessWidget {
                 ],
                 locale: Provider.of<AppLanguage>(context).appLocal,
                 localizationsDelegates: [
-                  // ... app-specific localization delegate[s] here
                   AppLocalization.delegate,
                   GlobalMaterialLocalizations.delegate,
                   GlobalWidgetsLocalizations.delegate,
